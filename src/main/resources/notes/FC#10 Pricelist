@@ -1,0 +1,21 @@
+-- FC#10 FastCentrik Pricelist
+
+-- Element Pricelists --
+f1) boolean bInsert                 // values: 0/1, insert Pricelist if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update Pricelist if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old Pricelists, upload all new from this file
+
+-- element Pricelist --
+f1) boolean bBasic                      // 1 = basic pricelist, 0 = others
+f2) float nDiscount                     // discount in percentage
+f3) boolean bDoNotDiscountOther         // do not apply another discount instead specified in nDiscount
+f4) boolean bDisabled                   // 0 = allow, 1 = disable
+f5) String sName                        // name of pricelist
+f6) String sDescription                 // description of pricelist
+f7) boolean bConversionFactor           // set to 0
+f8) DateTime dValidSince                // pricelist valid since
+f9) DateTime dValidUntil                // pricelist valid until
+f10) boolean bDefaultForRegistered      // default pricelist for registered customers (optional)
+f11) boolean bDefaultForNotRegistered   // default pricelist for not registered customers (optional)
+f12) String sExternalRecordId           // id of pricelist
+

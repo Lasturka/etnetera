@@ -1,0 +1,69 @@
+-- FC#3 FastCentrik Person --
+
+-- element Persons --
+f1) boolean bInsert                 // values: 0/1, insert category if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update category if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old categories, upload all new from this file
+
+-- Element Person --
+nAreaId
+nCityId
+nZipCodeId
+sFirm
+sFirm2
+sCountry
+sState
+sCounty
+sDistrict
+sCity
+sStreet
+sZipCode
+sIco
+sDic
+sBankAccount
+sBankCode
+sIban
+sBic
+bDisabled
+sEmail
+sPhone
+sFax
+sMobile
+dDateOfBirth
+sPlaceOfBirth
+dDateOfDeath
+sPlaceOfDeath
+
+f4) String sUrl                 // url
+f5) String sExternalRecordId    // id of brand
+f6) int nVariantMaskId          // id of internet shop
+
+    -- element ResourceLink --
+        f7) String sPath        // path to brand logo
+
+    -- element Bodies --
+        -- element Body --
+            f8) int nVariantId              // id of internet shop
+            f9) String sName                // brand name displayed at frontend
+            f10) String sAlternativeName    // alternative brand name for search engines
+            f11) String sAnnotation         // annotation displayed at frontend
+            f12) String sDescription        // description displayed at frontend
+            f13) String sMetaTitle          // title used for search engines
+            f14) String sMetaDescription    // description used for search engines
+            f15) String sMetaKeyWords       // keywords used for search engines
+
+    -- element Discounts --
+        -- element Discount --
+            f16) String sCode				// id of brand discount
+            f17) String sName               // name of brand discount
+            f18) float nDiscount            // value of discount in percent
+            f19) boolean bDisabled          // 0 = active now, 1 = not active (disabled)
+            f20) DateTime dValidSince       // discount valid since
+            f21) DateTime dValidUntil       // discount valid until
+            f22) int nInstanceMaskId        // id of internet shop discount is valid
+
+    -- element Limits --
+        -- element Limit --
+             f23) String sCode				// id of brand discount limit
+             f24) String sName              // name of brand discount limit
+             f25) float nLimit              // max value of brand discount in percent

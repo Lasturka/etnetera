@@ -1,0 +1,15 @@
+/***** FC#13 FastCentrik Commodity Variant ******/
+
+-- Element Commodities --
+    manufacturer = netdirect
+    version = 20120503
+f1) boolean bInsert                 // values: 0/1, insert if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old, upload all new from this file
+
+    -- Element Commodity --
+    f4) boolean bMaster                     // set to 0, product can't be master to itself
+    f5) int nOrderSlave                     // order of variant under master
+    f6) boolean bDisabled                   // 0 = show master product on frontend, 1 = only import, do not show on frontend
+    f7) String sExternalRecordId            // id of product
+    f8) String sExternalCommodityMasterId   // id of master product

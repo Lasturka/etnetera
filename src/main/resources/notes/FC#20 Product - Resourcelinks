@@ -1,0 +1,25 @@
+-- FC#20 FastCentrik Commodity ResourceLinks --
+
+-- Element Commodity_ResourceLinks --
+f1) boolean bInsert                     // values: 0/1, insert category if not exists with same id
+f2) boolean bUpdate                     // values: 0/1, update category if exists with same id
+f3) boolean bCompleteXml                // values: 0/1, delete all old categories, upload all new from this file
+f4) bDoNotDeleteMaster                  // 0 (default), 1 id don't erase pictures of master product (???)
+f5) bDeleteMainCommodityResourceLink    // 0, 1 (default) delete main resourcelink (???)
+f6) bDeleteByType                       // 0 (default) - don't delete, 1 - delete picture, 2 - delete file
+
+-- Element Commodity_ResourceLink --
+f7) String sExternalCommodityId         // id od product
+f8) String sCommodityCode               // code of product (use id instead)
+f9) boolean bDisabled                   // 0 = keep resourcelink, 1 = disable resourcelink
+f10) int nVariantId                     // variant of internet shop, 1 = main
+f11) int nType                          // 1 = picture, 2 = file
+f12) String sName                       // name of picture (file)
+f13) String sDescription                // description of picture (file)
+f14) boolean bMain                      // 0 (default), 1 = main picture (file)
+f15) boolean bTransport                 // 0 (default), 1 = mark as imported
+f16) int nOrder                         // order of picture (file)
+
+
+    -- Element ResourceLink --
+    f7) String sPath                    // FTP path to picture

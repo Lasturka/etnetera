@@ -1,0 +1,18 @@
+-- FC#22 FastCentrik Prices Pricelists Special
+
+-- Element Prices_PricelistSpecials --
+f1) boolean bInsert                 // values: 0/1, insert if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old, upload all new from this file
+
+-- element Price_PricelistSpecial --
+f4) float nStandardPrice            // catalogue price
+f5) float nBasePrice                // set to 0, otherwise other pricelist will take over this price
+f5) float nMinSellingPrice          // minimum selling price even if discounts are higher
+f6) boolean bDisabled               // 1 = disable this price
+
+    -- element Currency --
+    f7) String sCode                    // code of currency, e.g. CZK
+
+    -- element Commodity --
+    f8) String sExternalRecordId        // id of product

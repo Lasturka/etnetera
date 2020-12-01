@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts\header-layout :: header"></head>
+<nav th:replace="layouts\header-layout :: navbar"></nav>
+<nav th:replace="layouts\header-layout :: product-submenu"></nav>
+
+<br>
+
+<body>
+
+    <div class="container">
+        <form th:action="@{/products/save}" th:object="${product}" method="POST">
+
+            <div class="form-group row">
+                <!-- This will be used to bind to the product that was clicked on (USED FOR UPDATES}-->
+                <input type="hidden" th:field="${product.id}"/>
+
+                Code:&nbsp <input type="text" placeholder="Code" th:field="${product.code}">
+                <span style="color:red" th:if="${#fields.hasErrors('code')}"
+                      th:errors="${product.code}">
+                </span>
+            </div>
+
+            <div class="form-group row">
+                Name:&nbsp <input type="text" placeholder="CZ Name" th:field="${product.czTexts.name}">
+                <span style="color:red" th:if="${#fields.hasErrors('czTexts.name')}"
+                      th:errors="${product.czTexts.name}">
+                </span>
+            </div>
+
+            <div class="form-group row">
+                Description:&nbsp <input type="text" placeholder="CZ Description" th:field="${product.czTexts.description}">
+                <span style="color:red" th:if="${#fields.hasErrors('czTexts.description')}"
+                      th:errors="${product.czTexts.description}">
+                </span>
+            </div>
+
+            <div class="form-group row">
+                <button class="btn btn-info col-2" type="submit">Insert Product</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

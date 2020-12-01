@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts\header-layout :: header"></head>
+<nav th:replace="layouts\header-layout :: navbar"></nav>
+
+<br>
+
+<body>
+    <div class="container">
+        <h3>Product Directory</h3>
+        <hr>
+
+        <!-- Add New Product Button -->
+        <a th:href="@{/products/new}"
+           class="btn btn-primary btn-sm mb-3">
+            Add Product
+        </a>
+        <br></br>
+
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Code</th>
+                <th>CZ Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="theProduct : ${allProducts}">
+                    <td th:text="${theProduct.id}"/>
+                    <td th:text="${theProduct.code}"/>
+                    <td th:text="${theProduct.czTexts.name}"/>
+                    <td>
+                        <a th:href="@{/products/update(id=${theProduct.id})}"
+                           class="btn btn-info btn-sm">
+                            Update
+                        </a>
+
+                        <a th:href="@{/products/delete(id=${theProduct.id})}"
+                           class="btn btn-danger btn-sm"
+                           onclick="if (!(confirm('Are you sure you want to delete this product?'))) return false">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</body>
+
+</html>
