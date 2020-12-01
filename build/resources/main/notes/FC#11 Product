@@ -1,0 +1,424 @@
+-- Not used --
+
+-- Orion values, csv v. 6.03.01 --
+o1) String export_version               // version of CSV import
+o2) xxxxx current_version (Orion)       // always 0, skip
+o3) long timestamp                      // time stamp of CSV generation
+o4) String product_id                   // product ID
+o5) float purchase_price                // actual purchase price in € (after crediting personal discount)
+o6) float undiscounted_price            // price in € before crediting personal discount (not actual purchase price)
+o7) boolean special_price_flag          // 0 = price is allowed to be discounted, 1 = SP with no additional discount; convert to boolean
+o8) xxxxx minimum_purchase_price        // same as "o5", skip
+o9) xxxxx price_quantites               // always 1, skip
+o10) float recommended_selling_price    // recommended selling price in € including german VAT
+
+o11) String product class               // 1 (books, print), 2 (lingerie), 4 (condoms), 5 (love toys), 6 (drogerie), 7 (accessories, gag articles), 8 (DVD), 9 (tester), P (packages), Q (other)
+o12) String product_name_DE             // DE product name incl. variant
+o13) String title_DE                    // DE title
+o14) String product_name_EN             // EN product name incl. variant
+o15) String title_EN                    // EN title
+o16) String title_IT                    // IT title
+o17) String product_keyword             // DE product keyword
+o18) String full_text_DE                // DE second longest description
+o19) String full_text_EN                // EN second longest description
+o20) String full_text_IT                // IT second longest description
+
+o21) String label_name                  // brand or producer (sometimes empty)
+o22) String category_path               // DE category path
+o23) String category                    // category code
+o24) String group_product               // product ID "o4" of parent of group of products
+o25) boolean single_image               // same image for group of products; 1 = yes, 2 = no; convert to boolean
+o26) xxxxx tax_id                       // german tax_id
+o27) String ean_code                    // EAN code
+o28) String battery_supply              // E = batteries included, N = not included; may be empty
+o29) String battery_combination         // format: "battery type 1":"number of batteries", "battery type 2":"number of batteries"...
+                                        // battery types: 1604D (9V), AA, AAA, AAAA (error -> convert to AAA) C, CR2032, LR1130, LR23A, LR27A, LR41, LR44, N
+o30) String product_image_1             // product image 1
+
+o31) String product_image_1             // product image 2
+o32) String product_image_1             // product image 3
+o33) String product_image_1             // product image 4
+o34) String material_description        // DE materials description (not properly formatted); may be empty; good to pair to automation;
+o35) String material_thickness          // thickness of material; number or range like "0,06 - 0,07" in mm
+o36) String total_length                // length of product; number or range in cm
+o37) String diameter                    // diameter of product; number or range in cm
+o38) int weight                         // packaging weight in g
+o39) int length                         // packaging length in mm (if not known, default value is 10)
+o40) int width                          // packaging width in mm (if not known, default value is 10)
+
+o41) int height                         // packaging height in mm (if not known, default value is 10)
+o42) String contents                    // content in g, ml, l or m
+o43) String availability                // J = is in stock, N = not in stock; never empty
+o44) String delivery_week               // format: WW/YYYY; may be empty even if o43 is N
+o45) String dress_size                  // size of dress
+o46) String shoe_size                   // size of shoes
+o47) String main_color                  // DE main color of product; may be empty
+o48) String color_description           // DE more detailed color description
+o49) xxxxx battery_type                 // battery type by very few products, use "o29" instead
+o50) String packaging_size              // like "o42", but better formatted, no space, using: g, ml, Stück, Teile, g, Paar
+
+o51) String aroma                       // DE aroma
+o52) String isbn                        // ISBN (books only)
+o53) int number_of_pages                // number of pages (books only)
+o54) int total_duration                 // duration of DVD (min); one product has String format 143 Min -> convert to int
+o55) boolean hardcore_flag              // all products; 0 = not hardcore, 1 = hardcore (DVD or calendar); convert to boolean
+o56) xxxxx age_rating                   // Age rating, values: FSK16, FSK18, valid only for Germany, do not use it!
+o57) String product_languages           // DE languages of DVD, not manuals!
+o58) String country_of_origin_code      // country of origin, values: AT, BE, CA, CN, DE, DK, ES, FR, GB, HK, ID, IN, IT, JP, KR, LU, MX, MY, NL, PK, PL, PT, SI, TH, TR, TW, UA, US
+o59) String series_name                 // brand and series (not all products)
+o60) String reference_quantity          // reference quantity (ml or g)
+
+o61) float reference_price_factor       // contents "o42" * reference price factor "o61" = reference quantity "o60"
+o62) boolean promotional_packing        // all products; 0 = not promotional, 1 = promotional (probably promo photo on package); convert to boolean
+o63) String product_icons               // DE icons like: women, zipper, snaps, lace, lacing, faux_leather, withdrawal_cord, vaginal, anal, vibration, sucking...
+o64) int selling_unit                   // number of products in one box (not necessary to order all)
+o65) xxxxx voc_percentage               // percent of volatile organic compounds
+o66) String barcode                     // barcode
+o67) String barcode_type                // type of barcode "o66", values: EAN-13, EAN-8, UPC-A or empty
+o68) boolean novelty_flag               // all products; 0 = not new, 1 = new (product added last month or so); convert to boolean
+o69) boolean food_information_flag      // all products; 0 = not edible, 1 = edible; convert to boolean
+o70) String detailed_full_text_de       // DE longest description
+
+o71) String group_id                    // unique group id for group product "o24"
+o72) String detailed_full_text_en       // EN longest description
+o73) String tariff_number               // tariff number for custom clearance
+o74) String inci_text                   // ingredients
+o75) String usp1_DE                     // DE properties in points #1
+o76) String usp2_DE                     // DE properties in points #2
+o77) String usp3_DE                     // DE properties in points #3
+o78) String usp4_DE                     // DE properties in points #4
+o78) String usp5_DE                     // DE properties in points #5
+o79) String usp1_EN                     // EN properties in points #1
+o80) String usp2_EN                     // EN properties in points #2
+o81) String usp3_EN                     // EN properties in points #3
+o82) String usp4_EN                     // EN properties in points #4
+o83) String usp5_EN                     // EN properties in points #5
+
+-- Fastcentrik values --
+
+/***** FC#10 FastCentrik Commodity ******/
+
+-- Element Commodities --
+manufacturer = "netdirect"
+version = "20120503"
+f1) boolean bInsert                 // values: 0/1, insert Product if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update Product if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old Products, upload all new from this file
+f4) boolean bDoNotDeleteMaster      // 1 = do not delete master product if (not?) present in xml - default="0"
+f5) boolean bDeleteOnlyMaster       // 1 = delete only master products - default="0"
+f6) String sPairingFields           // default = 0
+
+-- Element Commodity --
+f7) int nVariantMaskId                  // id of internet shop, main shop id = 1
+f8) String sCode                        // code of product (not id, but is good to be the same)
+f9) boolean bFreeShipping               // free shipping (all types) on this product
+f10) boolean bPurchasedSeparately       // is allowed to sell without another product, default = 1
+f11) float nShippingWeight              // weight in kg
+f12) float nQuantityInStock             // number in stock
+f13) boolean bMaster                    // 0 = regular product, 1 = master product
+f14) int nOrder                         // order under category by default (without filter applied)
+f15) int nOrderSlave                    // if slave, order of product under variants
+f16) boolean bSet                       // default = 0
+f17) boolean bTemplate                  // 0 = regular product, 1 = only template
+f18) boolean bDisabled                  // 0 = show on frontend, 1 = not show on frontend
+f19) DateTime dValidSince               // show product on frontend since
+f20) DateTime dValidUntil               // show product on frontend until
+f21) String sExternalRecordId           // id of product
+f22) String sExternalCommodityMasterId  // id of master
+f23) boolean bAllSlaveDisabled          // 0 = allow to use slaves, 1 = disable to be master for variant
+f24) boolean bDeleted                   // 0 = keep product, 1 = delete product
+
+    -- Element Bodies --
+        -- Element Body --
+        f25) int nVariantId             // id of internet shop, main shop id = 1
+        f26) String sName               // name of product showed on frontend
+        f27) String sAlternativeName    // name of product for search engines
+        f28) String sAnnotation         // annotation of product
+        f29) String sDescription        // product description showed on frontend
+        f30) String sMetaTitle          // meta title of product for search engines
+        f31) String sMetaDescription    // meta description of product for search engines
+        f32) String sMetaKeyWords       // meta keywords of product for search engines
+
+            -- Element xExtendedProperties --
+
+            -- Element Vat --
+            f33) float nValue           // VAT value in percent
+            f34) String sCode           // code of VAT
+
+
+            -- Element ResourceLinks --
+                -- ResourceLink -- (multiple)
+                f35) String sPath       // path to product picture
+                f36) String sName       // name of product picture
+                f37) String sExtension  // extension of product picture
+
+            -- Element Codes --
+                -- Element Code -- (multiple)
+                f38) String sCode       // code of code, e.g. Ean
+                f39) String sValue      // value of code
+
+            -- Element Attributes --
+                -- Element Attribute -- (multiple)
+                f40) String sCode       // code of attribute
+                f41) int nVariantId     // variant of internet shop, 1 = main
+                f42) int nOrder         // order in which is showed on frontend
+
+    -- Element Persons --
+        -- Element Person --
+        f40) int nPersonTypeId          // id of person, 1 = brand
+        f41) String sFirm               // name of the company (not brand name!)
+        f42) String sExternalPersonId   // id of brand
+        f43) boolean bMaxDiscountByCommodity    // maximal discount on brand, default = 0
+            -- Element Bodies --
+                --Element Body --
+                f44) int nVariantId     // variant of internet shop, 1 = main
+                f45) String sName       // name of the brand
+
+    -- Element StockAvailability --
+    f46) String sExternalStockAvailabilityId    // id of stock availability from FC#5
+    f47) String sCode                           // code of stock availability, but better use only id
+        -- Element Bodies -- (better use only id)
+            --Element Body --
+            f48) String sName           // name of stock availability on frontend
+            f49) String sDescription    // description of stock availability on frontend
+            f50) int nLanguageId        // id of language, CZ = 1029
+
+    -- Element Charges --
+        -- Element Charge --
+        f51) String sExternalChargeId   // id of charge
+        f52) nVariantId                 // variant of internet shop, 1 = main
+
+    -- Element Discounts --
+        -- Element Discount --
+        f53) float nDiscount                        // discount in percent
+        f54) int nInstanceMask                      // instance mask (what does it mean?), required, default = 0
+        f55) boolean bAddedToTheDiscountPriceList   // 0 = sale replace other discounts, 1 (default) = sale is added to other discounts
+
+    -- Element Limits --
+        -- Element Limit --
+        f56) float nLimit                           // limit of discount, 0 = no limit, required
+
+    -- Element Units --
+        -- Element Unit --
+        f57) boolean default                    // 1 = is default unit for product
+        f58) String sCode                       // name of unit, e.g. "ks"
+        f59) boolean bBaseUnit                  // 1 = is base unit for product
+        f60) boolean bAddToBasket               // 1 = is possible to add to basket
+        f61) boolean bDecimalNumbers            // 0 = only whole numbers buyable, 1 = is possible to use decimal numbers
+        f62) String sFormula                    // formula for unit according to base unit, default "X * 1"
+        f63) boolean bTransport                 // 0 (default) = is not data import, 1 = data import (???)
+        f64) float nStartingQuantity            // initial quantity displayed to buy (can be overwritten up or down), required
+        f65) float nMinQuantity                 // minimum quantity to buy, required
+        f66) float nOnlyMultiplesOfThisQuantity // multiples of quantity only allowed to buy, required
+
+    -- Element Warranty --
+    f67) String sCode               // code of warranty, e.g. 24m
+    f68) int length                 // length of warranty in months
+
+
+
+/***** FC#12 FastCentrik Commodity Extended Properties ******/
+sExternalRecordId
+sCommodityCode
+nVariantId
+"ID", "Feed_Zbozi_IsErotic
+"Value", "True"
+
+/***** FC#13 FastCentrik Commodity Variant ******/
+bMaster
+nOrderSlave
+bDisabled
+sExternalRecordId
+sExternalCommodityMasterId
+
+/***** FC#20 FastCentrik Commodity Resourcelinks (main pictures) ******/
+bDoNotDeleteMaster
+bDeleteMainCommodityResourceLink
+bDeleteByType
+sPairingFields
+
+sExternalCommodityId
+sCommodityCode
+bDisabled
+nVariantId
+nType
+sName
+sDescription
+bMain
+bTransport
+nOrder
+
+sPath
+
+/***** FC#21 FastCentrik Prices Pricelists ******/
+sCode
+sExternalRecordId
+sExternalRecordId
+
+nPrice
+nManualPrice
+bDisabled
+
+sCode
+sExternalRecordId
+sExternalRecordId
+
+
+/***** FC#22 FastCentrik Prices Pricelists Special ******/
+nStandardPrice
+nBasePrice
+nMinSellingPrice
+bDisabled
+
+sCode
+sExternalRecordId
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Product values --
+p1) String productId           // unique product ID, same as o2,
+
+
+/***************** Only Strubbi pricelist *****************/
+cataloguePage
+isDiscountablePurchasePrice
+strubbiWholesalePrice
+strubbiOfferPrice
+strubbiSoldOutPrice
+
+supplierDeliveryDate
+piecesInPackage
+
+/***************** CZ translation *************************/
+
+nameCZ
+shortDescriptionCZ
+fullDescriptionCZ
+googleTranslatorCZFromDetailedDE
+googleTranslatorCZFromDetailedEN
+googleTranslatorCZFromFullDE
+googleTranslatorCZFromFullEN
+
+importOK
+newProduct
+noLongerInSupplierOffer
+inStock
+blockToSale
+
+automaticallyChangableLasturkaRetailPrice
+manualLasturkaPrice
+sale
+
+priceCorrection
+small
+
+parentOfGroupOfProducts
+sisterProduct
+nVariants
+
+mainCategoryId
+ArrayList<String>	otherCategoryIds
+mainMaterialId;
+BrandId;
+
+webPageSupplier;
+
+YesNoNew vibrations;
+boolean	isVibratory;
+
+boolean hasVariants;
+variant;
+
+heurekaProductID
+heurekaProductName
+heurekaProduct
+heurekaDescription
+heurekaDeliveryDate
+heurekaItemGroupID
+heurekaAccessoryID
+
+isLabelTop
+isLabelAction
+isLabelSale
+isLabelNew
+isLabelFreeShipping
+isLabelRecommended
+isLabelHomePage
+isLabelFixedPrice
+zobrazit ve slevách
+
+/***************** metatags *************************/
+h1
+h1title
+metaKeywords
+metaDescription
+metaTitle
+
+/***************** feeds visibility *************************/
+visibleInFeedHeureka;
+visibleInFeedZbozi;
+
+	/***************** feeds tags *************************/
+heurekaCPC;			// tag HEUREKA_CPC
+zboziCPC;			// tag MAX_CPC
+feedItemType;		// tag ITEM_TYPE
+
+/***************** other WR tags *************************/
+deliveryPriceIncrease
+disountPercentage
+groupOrder		// order in variants
+itemGroupID		// id of nonsold parent product
+wrWeight;		// "price" of product for delivery restrictions
+
+ArrayList<String> 	releatedProductIDs;		// ID of releated product
+ArrayList<String> 	alterantedProductIDs;	// ID of alteranted product
+
+numberInStock			// number of items in stock
+minimumOrder			// minimum amount to order
+
+dPurchasePricePohoda
+
+unit			// unit (usually "ks")
+
+visibleInShop	// ~active in shop
+
+soldOut			// =no longer in supplier Offer && not in stock
+untilSold				// =no longer in supplier Offer && in stock
+
+/***************** statistic & Pohoda *************************/
+	// prodeje - arraylist Day|value
+	// historie ceny - arraylist Day|value
+pohodaOrders					// objednávky
+pohodaReserved					// rezervace
+reclamations					// reklamace
+pohodaOrdered
+

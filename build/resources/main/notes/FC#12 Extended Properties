@@ -1,0 +1,16 @@
+/***** FC#12 FastCentrik Commodity Extended Properties ******/
+
+-- Element CommodityExtendedProperties --
+f1) boolean bInsert                 // values: 0/1, insert if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old, upload all new from this file
+
+    -- Element CommodityExtendedProperty --
+    f4) String sExternalRecordId    // id of product from FC#11
+    f5) String sCommodityCode       // code of product (better use only ID)
+    f6) int nVariantId              // variant of internet shop, default main = 1
+
+        -- Element EP --
+            -- Element P -- (multiple)
+            f7) ID                  // e.g. Feed_Zbozi_IsErotic
+            f8) Value               // e.g. True

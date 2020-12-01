@@ -1,0 +1,20 @@
+-- FC#21 FastCentrik Prices Pricelists
+
+-- Element Prices_Pricelists --
+f1) boolean bInsert                 // values: 0/1, insert if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old, upload all new from this file
+
+-- element Price_Pricelist --
+f4) float nPrice                        // product price
+f5) float nManualPrice                  // manually typed price
+f6) boolean bDisabled                   // do not use, error in XSD
+
+    -- element Currency --
+    f7) String sCode                    // code of currency, e.g. CZK
+
+    -- element Pricelist --
+    f8) String sExternalRecordId        // id of pricelist, ND001 as main
+
+    -- element Commodity --
+    f9) String sExternalRecordId        // id of product

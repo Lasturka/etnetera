@@ -1,0 +1,23 @@
+-- FC#16 FastCentrik Commodity Stock Availability --
+
+-- Element CommodityStockAvailabilities --
+f1) boolean bInsert                 // values: 0/1, insert if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old, upload all new from this file
+
+    -- Element CommodityStockAvailability --
+    f4) String sCode                // code of product
+    f5) String sExternalRecordId    // id of product
+    f6) boolean bDisabled           // 1 = disable product to show on frontend, required
+    f7) int nQuantityInStock        // order in filter on frontend
+    f8) String sExternalRecordId    // number of this products in stock
+
+        -- StockAvailability --
+        f9) String sCode                    // code of stock availability
+        f10) String sExternalRecordId       // id of stock availability
+
+            -- bodies --
+                -- body --
+                f11) String sName           // name of stock availability on frontend
+                f12) String sDescription    // description of stock availability on frontend
+                f13) int nLanguageId        // id of language, CZ = 1029

@@ -1,0 +1,17 @@
+-- FC#19 FastCentrik Commodity Category --
+
+-- Element CommodityInCategories --
+f1) boolean bInsert                 // values: 0/1, insert category if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update category if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old categories, upload all new from this file
+
+-- element CommodityInCategory --
+f4) String sExternalRecordId        // don't use, is in attribute Commodity
+f5) boolean bDisabled               // 0 (default) = show in category, 1 = don't show in category
+f6) boolean bMain                   // 0 = will be used fist imported category, 1 = main category
+
+    -- element Commodity --
+    f7) String sExternalRecordId    // id of product
+
+    -- element Category --
+    f8) String sExternalRecordId    // id of category

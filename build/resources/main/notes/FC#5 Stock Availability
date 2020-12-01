@@ -1,0 +1,22 @@
+-- FC#5 FastCentrik Stock Availability --
+
+-- Element StockAvailabilities --
+f1) boolean bInsert                 // values: 0/1, insert Stock Availability if not exists with same id
+f2) boolean bUpdate                 // values: 0/1, update Stock Availability if exists with same id
+f3) boolean bCompleteXml            // values: 0/1, delete all old Stock Availabilities, upload all new from this file
+
+    -- Element StockAvailability --
+    f4) String sCode                // code of Stock Availability
+    f5) int nCountExpeditionDays    // days to expedition (0 for in stock items)
+    f6) boolean bShowOnFE           // show products with this availability on frontend
+    f7) boolean bBuyAble            // able to insert product into basket
+    f8) boolean bShowWatchDog       // show watch dog by product
+    f9) boolean bExportToFeed       // export product to all feeds
+    f10) int nOrder                 // order in filter on frontend
+    f11) String sExternalRecordId   // id of Stock Availability
+
+        -- Element Bodies --
+            -- Element Body --
+            f12) int nLanguageId        // id of language, CZ = 1029
+            f13) String sName           // name of stock availability on frontend
+            f14) String sDescription    // description of stock availability on frontend
